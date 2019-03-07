@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+<!------ Include the above in your HEAD tag ---------->
+    </head>
+    <body>
+      <script src="../js/index.js"></script>
+      <!-- <div class="hero-image"> -->
+        <img src="logo.jpg" alt="The Spectrum" style="margin-left: 200px;">
+      <!-- </div> -->
+        <div class="col-xs-12" align="center">
+            <div class="col-md-12" >
+                <h3 > Import a Dataset </h3>
+                <div id="field">
+                <div id="field0" style="margin-top: 100px;margin-left: 200px;">
+<!-- Name-->
+<div class="form-group">
+  <label class="col-md-2 control-label" for="action_id">Name</label>  
+  <div class="col-md-5">
+  <input id="action_id" name="action_id" type="text" placeholder="" class="form-control input-md">
+  </div>
+</div>
+<br><br><br>
+<!-- Description-->
+<div class="form-group">
+  <label class="col-md-2 control-label" for="action_name">Description</label>  
+  <div class="col-md-5">
+  <input id="action_name" name="action_name" type="text" placeholder="" class="form-control input-md">   
+  </div>
+</div>
+<br><br>
+<!-- Split Range-->
+<div class="form-group">
+  <label class="col-md-2 control-label" for="action_split">Split Range</label>  
+  <div class="col-md-5">
+  <input id="action_split" name="action_split" type="number" placeholder="" class="form-control input-md">   
+  </div>
+</div>
+<br><br>
+
+       <!-- File Button --> 
+<div class="form-group">
+  <label class="col-md-2 control-label" for="action_json">DataSet</label>
+  <div class="col-md-2">
+              <input type="file" id="action_json" name="action_json" class="input-file" accept=".pdf,.csv">
+     <div id="action_jsondisplay"></div>
+  </div>
+</div>
+<br><br>
+<!-- Question-->
+<div class="form-group" id = "question-id">
+  <label class="col-md-2 control-label" for="action_question">Question</label>  
+  <div class="col-md-5">
+  <input id="action_question" name="action_question" type="text" placeholder="" class="form-control input-md">   
+  </div>
+  <div class="col-md-1">
+    <button id="add-more" name="add-more" class="btn btn-primary">Add More</button>
+    <!--<button id="remove-more" name="remove-more" class="btn btn-danger">Delete Last Question</button> -->
+  </div>
+</div>
+<br><br>
+<input type="submit" value = "Submit" style="margin-right: 300px;margin-top: 75px;" class="btn btn-primary">
+</div>
+</div>
+
+              
+            </div>
+        </div>
+    </div>
+  </body>
