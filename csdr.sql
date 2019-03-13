@@ -43,9 +43,9 @@ CREATE TABLE `tbl_admin` (
 --
 
 CREATE TABLE `tbl_archived_answers` (
-  `DATASET_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
-  `SPLIT_FILE_ID` int(8) NOT NULL,
-  `QUESTION_ID` int(8) NOT NULL,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL ,
+  `SPLIT_FILE_ID` int(8) NOT NULL ,
+  `QUESTION_ID` int(8) NOT NULL ,
   `UBIT_NAME` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `ANSWER` varchar(1024) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -57,7 +57,7 @@ CREATE TABLE `tbl_archived_answers` (
 --
 
 CREATE TABLE `tbl_archived_datasets` (
-  `DATASET_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
   `DESCRIPTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_FILETYPE` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_FILE` mediumblob NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `tbl_archived_datasets` (
 --
 
 CREATE TABLE `tbl_archived_questions` (
-  `DATASET_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
   `QUESTION_ID` int(8) NOT NULL,
   `QUESTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -88,7 +88,7 @@ CREATE TABLE `tbl_archived_questions` (
 --
 
 CREATE TABLE `tbl_current_dataset` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `DATASET_NAME` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_DESCRIPTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_FILETYPE` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `tbl_current_dataset` (
 
 CREATE TABLE `tbl_dataset_questions` (
   `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
-  `QUESTION_ID` int(8) NOT NULL,
+  `QUESTION_ID` int(8) NOT NULL ,
   `QUESTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -115,7 +115,7 @@ CREATE TABLE `tbl_dataset_questions` (
 --
 
 CREATE TABLE `tbl_review_answers` (
-  `DATASET_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
   `SPLIT_FILE_ID` int(8) NOT NULL,
   `QUESTION_ID` int(8) NOT NULL,
   `UBIT_NAME` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `tbl_review_answers` (
 --
 
 CREATE TABLE `tbl_splitted_datasets` (
-  `DATASET_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
   `SPLIT_FILE_ID` int(8) NOT NULL,
   `SPLIT_RANGE` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `UBIT_NAME` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -163,8 +163,7 @@ ALTER TABLE `tbl_archived_questions`
 --
 -- Indexes for table `tbl_current_dataset`
 --
-ALTER TABLE `tbl_current_dataset`
-  ADD PRIMARY KEY (`DATASET_ID`);
+
 
 --
 -- Indexes for table `tbl_dataset_questions`
