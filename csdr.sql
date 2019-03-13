@@ -88,7 +88,7 @@ CREATE TABLE `tbl_archived_questions` (
 --
 
 CREATE TABLE `tbl_current_dataset` (
-  `DATASET_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
   `DATASET_NAME` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_DESCRIPTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_FILETYPE` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE `tbl_current_dataset` (
 --
 
 CREATE TABLE `tbl_dataset_questions` (
-  `DATASET_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
   `QUESTION_ID` int(8) NOT NULL,
   `QUESTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

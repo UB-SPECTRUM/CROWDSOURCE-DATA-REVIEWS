@@ -17,36 +17,37 @@
                 <h3 > Import a Dataset </h3>
                 <div id="field">
                 <div id="field0" style="margin-top: 100px;margin-left: 200px;">
+                  <form method="post" action="../../model/currentdataset.php" enctype="multipart/form-data">
 <!-- Name-->
 <div class="form-group">
-  <label class="col-md-2 control-label" for="action_id">Name</label>  
+  <label class="col-md-2 control-label">Name</label>  
   <div class="col-md-5">
-  <input id="action_id" name="action_id" type="text" placeholder="" class="form-control input-md">
+  <input id="name" name="Name" type="text" placeholder="" class="form-control input-md">
   </div>
 </div>
 <br><br><br>
 <!-- Description-->
 <div class="form-group">
-  <label class="col-md-2 control-label" for="action_name">Description</label>  
+  <label class="col-md-2 control-label">Description</label>  
   <div class="col-md-5">
-  <input id="action_name" name="action_name" type="text" placeholder="" class="form-control input-md">   
+  <textarea id="description" name="Description" placeholder="" class="form-control input-md"> </textarea>
   </div>
 </div>
-<br><br>
+<br><br><br><br>
 <!-- Split Range-->
 <div class="form-group">
-  <label class="col-md-2 control-label" for="action_split">Split Range</label>  
+  <label class="col-md-2 control-label">Split Range</label>  
   <div class="col-md-5">
-  <input id="action_split" name="action_split" type="number" placeholder="" class="form-control input-md">   
+  <input id="split-range" name="split" type="number" placeholder="" class="form-control input-md">   
   </div>
 </div>
 <br><br>
 
        <!-- File Button --> 
 <div class="form-group">
-  <label class="col-md-2 control-label" for="action_json">DataSet</label>
+  <label class="col-md-2 control-label" >DataSet</label>
   <div class="col-md-2">
-              <input type="file" id="action_json" name="action_json" class="input-file" accept=".pdf,.csv">
+              <input type="file" id="file-input" name="file" class="input-file" accept=".pdf,.csv">
      <div id="action_jsondisplay"></div>
   </div>
 </div>
@@ -63,12 +64,14 @@
   </div>
 </div>
 <br><br>
-<input type="submit" value = "Submit" style="margin-right: 300px;margin-top: 75px;" class="btn btn-primary">
+<input type="submit" name="submit_row" value = "Submit" style="margin-right: 300px;margin-top: 75px;" class="btn btn-primary">
+</form>
+<!-- <div> 
+  <?php include '../../model/currentdataset.php';?>
+</div> -->
 </div>
 </div>
-
-              
-            </div>
-        </div>
-    </div>
-  </body>
+</div>
+</div>
+</body>
+</html>
