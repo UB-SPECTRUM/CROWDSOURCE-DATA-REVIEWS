@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2019 at 10:34 PM
+-- Generation Time: Mar 13, 2019 at 10:45 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -170,23 +170,19 @@ ALTER TABLE `tbl_current_dataset`
 -- Indexes for table `tbl_dataset_questions`
 --
 ALTER TABLE `tbl_dataset_questions`
-  ADD PRIMARY KEY (`QUESTION_ID`),
-  ADD KEY `DATASET_ID` (`DATASET_ID`);
+  ADD PRIMARY KEY (`QUESTION_ID`);
 
 --
 -- Indexes for table `tbl_review_answers`
 --
 ALTER TABLE `tbl_review_answers`
-  ADD PRIMARY KEY (`SPLIT_FILE_ID`,`QUESTION_ID`),
-  ADD KEY `DATASET_ID` (`DATASET_ID`),
-  ADD KEY `QUESTION_ID` (`QUESTION_ID`);
+  ADD PRIMARY KEY (`SPLIT_FILE_ID`,`QUESTION_ID`);
 
 --
 -- Indexes for table `tbl_splitted_datasets`
 --
 ALTER TABLE `tbl_splitted_datasets`
-  ADD PRIMARY KEY (`SPLIT_FILE_ID`),
-  ADD KEY `DATASET_ID` (`DATASET_ID`);
+  ADD PRIMARY KEY (`SPLIT_FILE_ID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
