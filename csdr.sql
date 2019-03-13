@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2019 at 10:48 PM
+-- Generation Time: Mar 13, 2019 at 10:34 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -43,9 +43,9 @@ CREATE TABLE `tbl_admin` (
 --
 
 CREATE TABLE `tbl_archived_answers` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL ,
-  `SPLIT_FILE_ID` int(8) NOT NULL ,
-  `QUESTION_ID` int(8) NOT NULL ,
+  `DATASET_ID` int(8) NOT NULL,
+  `SPLIT_FILE_ID` int(8) NOT NULL,
+  `QUESTION_ID` int(8) NOT NULL,
   `UBIT_NAME` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `ANSWER` varchar(1024) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -57,7 +57,7 @@ CREATE TABLE `tbl_archived_answers` (
 --
 
 CREATE TABLE `tbl_archived_datasets` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) NOT NULL,
   `DESCRIPTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_FILETYPE` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_FILE` mediumblob NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `tbl_archived_datasets` (
 --
 
 CREATE TABLE `tbl_archived_questions` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) NOT NULL,
   `QUESTION_ID` int(8) NOT NULL,
   `QUESTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -88,7 +88,7 @@ CREATE TABLE `tbl_archived_questions` (
 --
 
 CREATE TABLE `tbl_current_dataset` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `DATASET_ID` int(8) NOT NULL,
   `DATASET_NAME` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_DESCRIPTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
   `DATASET_FILETYPE` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -103,8 +103,8 @@ CREATE TABLE `tbl_current_dataset` (
 --
 
 CREATE TABLE `tbl_dataset_questions` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
-  `QUESTION_ID` int(8) NOT NULL ,
+  `DATASET_ID` int(8) NOT NULL,
+  `QUESTION_ID` int(8) NOT NULL,
   `QUESTION` varchar(512) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -115,7 +115,7 @@ CREATE TABLE `tbl_dataset_questions` (
 --
 
 CREATE TABLE `tbl_review_answers` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) NOT NULL,
   `SPLIT_FILE_ID` int(8) NOT NULL,
   `QUESTION_ID` int(8) NOT NULL,
   `UBIT_NAME` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `tbl_review_answers` (
 --
 
 CREATE TABLE `tbl_splitted_datasets` (
-  `DATASET_ID` int(8) COLLATE utf8_unicode_ci NOT NULL,
+  `DATASET_ID` int(8) NOT NULL,
   `SPLIT_FILE_ID` int(8) NOT NULL,
   `SPLIT_RANGE` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `UBIT_NAME` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -163,25 +163,46 @@ ALTER TABLE `tbl_archived_questions`
 --
 -- Indexes for table `tbl_current_dataset`
 --
-
+ALTER TABLE `tbl_current_dataset`
+  ADD PRIMARY KEY (`DATASET_ID`);
 
 --
 -- Indexes for table `tbl_dataset_questions`
 --
 ALTER TABLE `tbl_dataset_questions`
-  ADD PRIMARY KEY (`DATASET_ID`,`QUESTION_ID`);
+  ADD PRIMARY KEY (`QUESTION_ID`),
+  ADD KEY `DATASET_ID` (`DATASET_ID`);
 
 --
 -- Indexes for table `tbl_review_answers`
 --
 ALTER TABLE `tbl_review_answers`
-  ADD PRIMARY KEY (`DATASET_ID`,`SPLIT_FILE_ID`,`QUESTION_ID`);
+  ADD PRIMARY KEY (`SPLIT_FILE_ID`,`QUESTION_ID`),
+  ADD KEY `DATASET_ID` (`DATASET_ID`),
+  ADD KEY `QUESTION_ID` (`QUESTION_ID`);
 
 --
 -- Indexes for table `tbl_splitted_datasets`
 --
 ALTER TABLE `tbl_splitted_datasets`
-  ADD PRIMARY KEY (`DATASET_ID`,`SPLIT_FILE_ID`);
+  ADD PRIMARY KEY (`SPLIT_FILE_ID`),
+  ADD KEY `DATASET_ID` (`DATASET_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_current_dataset`
+--
+ALTER TABLE `tbl_current_dataset`
+  MODIFY `DATASET_ID` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_splitted_datasets`
+--
+ALTER TABLE `tbl_splitted_datasets`
+  MODIFY `SPLIT_FILE_ID` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -209,7 +230,9 @@ ALTER TABLE `tbl_dataset_questions`
 -- Constraints for table `tbl_review_answers`
 --
 ALTER TABLE `tbl_review_answers`
-  ADD CONSTRAINT `tbl_review_answers_ibfk_1` FOREIGN KEY (`DATASET_ID`) REFERENCES `tbl_current_dataset` (`DATASET_ID`);
+  ADD CONSTRAINT `tbl_review_answers_ibfk_1` FOREIGN KEY (`DATASET_ID`) REFERENCES `tbl_current_dataset` (`DATASET_ID`),
+  ADD CONSTRAINT `tbl_review_answers_ibfk_2` FOREIGN KEY (`QUESTION_ID`) REFERENCES `tbl_dataset_questions` (`QUESTION_ID`),
+  ADD CONSTRAINT `tbl_review_answers_ibfk_3` FOREIGN KEY (`SPLIT_FILE_ID`) REFERENCES `tbl_splitted_datasets` (`SPLIT_FILE_ID`);
 
 --
 -- Constraints for table `tbl_splitted_datasets`
