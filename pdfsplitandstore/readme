@@ -12,4 +12,5 @@ Tested and OK.
 API allows only 250 files for an individual user. Should go for premium for unlimited access.
 Composer installation.
 Created dummy database and php web view only for checking this functionality. Need to be integrated once the other parts are ready.
+Hence,it is not pushed onto stark.
 
