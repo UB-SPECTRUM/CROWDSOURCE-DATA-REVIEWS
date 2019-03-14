@@ -1,0 +1,15 @@
+Splitting of the pdf is done using ILOVEPDF Developer API.
+Need to install the dependency. Used composer for doing that.
+
+Testing database it set up to check the functionality.
+
+Code works as it splits the pdf and zips the splitted content which is inturn unzipped to a folder. 
+The unzipped folder is scanned through for the split pdfs and all of them are uploaded into the database.
+
+Tested and OK.
+
+********* Constraints **********
+API allows only 250 files for an individual user. Should go for premium for unlimited access.
+Composer installation.
+Created dummy database and php web view only for checking this functionality. Need to be integrated once the other parts are ready.
+
